@@ -211,9 +211,11 @@ public struct WatchFaceLayout: Equatable, Sendable {
     }
 
     /// The font size of the time.
-    public var timeSize: CGFloat { (size.height * 0.19).rounded() }
+    public var timeSize: CGFloat { (size.height * 0.17).rounded() }
 
-    public var timeCenter: CGPoint { CGPoint(x: size.width / 2, y: size.height * 0.21) }
+    /// The center of the time: low enough that its digits stay clear of the system clock at the top right, which
+    /// watchOS keeps drawing over every app, and above the rectangular complication.
+    public var timeCenter: CGPoint { CGPoint(x: size.width / 2, y: size.height * 0.225) }
 
     public var rectangularCenter: CGPoint {
         CGPoint(x: size.width / 2, y: size.height * 0.34 + metrics.rectangular.height / 2)

@@ -168,7 +168,7 @@ struct RectangularPage: View {
                 // below the clock so its value on the right never runs into it.
                 GalleryCaption(text: "RECTANGULAR · " + ComplicationRenderingMode.fullColor.galleryCaption)
                     .padding(.leading, 6)
-                    .padding(.bottom, 10)
+                    .padding(.bottom, 14)
                 ComplicationPreview(.rectangular, metrics: metrics, renderingMode: .fullColor) {
                     HydrateProgressComplication(day: .preview)
                 }
@@ -226,8 +226,5 @@ struct FacePage: View {
         }
         .complicationRenderingMode(tinted ? .accented : nil, tint: tinted ? galleryFaceTint : nil)
         .ignoresSafeArea()
-        // The mock face draws its own time at the top, right below where watchOS puts the app's clock; hiding the
-        // system clock on this page keeps the two from crowding each other.
-        .persistentSystemOverlays(.hidden)
     }
 }
