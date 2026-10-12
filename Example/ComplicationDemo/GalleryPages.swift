@@ -164,14 +164,17 @@ struct RectangularPage: View {
     var body: some View {
         GalleryScreen(title: nil) { metrics in
             VStack(alignment: .leading, spacing: 4) {
+                // The caption shares its row with the system clock at the top right; the complication starts
+                // below the clock so its value on the right never runs into it.
                 GalleryCaption(text: "RECTANGULAR · " + ComplicationRenderingMode.fullColor.galleryCaption)
                     .padding(.leading, 6)
+                    .padding(.bottom, 10)
                 ComplicationPreview(.rectangular, metrics: metrics, renderingMode: .fullColor) {
                     HydrateProgressComplication(day: .preview)
                 }
                 GalleryCaption(text: ComplicationRenderingMode.accented.galleryCaption)
                     .padding(.leading, 6)
-                    .padding(.top, 6)
+                    .padding(.top, 4)
                 ComplicationPreview(.rectangular, metrics: metrics, renderingMode: .accented, tint: galleryFaceTint) {
                     HydrateReminderComplication(entry: HydrateSchedule.previewEntry)
                 }
@@ -223,5 +226,8 @@ struct FacePage: View {
         }
         .complicationRenderingMode(tinted ? .accented : nil, tint: tinted ? galleryFaceTint : nil)
         .ignoresSafeArea()
+        // The mock face draws its own time at the top, right below where watchOS puts the app's clock; hiding the
+        // system clock on this page keeps the two from crowding each other.
+        .persistentSystemOverlays(.hidden)
     }
 }

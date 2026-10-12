@@ -27,7 +27,7 @@ ComplicationFamilyView {
 
 ## Screenshots
 
-Captured from the example app's complication gallery on an Apple Watch simulator by CI. The complications are drawn at their real size for 46mm and 49mm watches. All numbers are made up.
+Captured by CI on an Apple Watch simulator from the example app's complication gallery. These are not screenshots of a real watch face: CI cannot put complications on a real watch face and capture it, so the gallery shows the complications inside the example app, on a watch face the app draws itself (with its own fixed 10:09 time), at the real point size of 46mm and 49mm watches. All numbers are made up.
 
 | Circular | Corner | Rectangular | Watch face |
 | :---: | :---: | :---: | :---: |
