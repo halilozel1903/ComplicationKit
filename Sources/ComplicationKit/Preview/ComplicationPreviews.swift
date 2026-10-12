@@ -182,11 +182,11 @@ public struct WatchFacePreview<Content: View>: View {
 
 extension WatchFacePreview {
     /// A face that shows `complication`, usually a `ComplicationFamilyView`, in every slot.
-    public init<Complication: View>(
+    public init(
         time: String = "10:09",
         timeColor: Color = .white,
-        @ViewBuilder complication: @escaping () -> Complication
-    ) where Content == Complication {
+        @ViewBuilder complication: @escaping () -> Content
+    ) {
         self.init(time: time, timeColor: timeColor) { _ in complication() }
     }
 }
